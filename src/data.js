@@ -29,7 +29,7 @@ export const projects = [
     title: '吃得明白',
     type: 'AI饮食分析工具',
     points: ['面向老人 / 慢病家庭', '图像识别 + 营养分析'],
-    url: 'https://chi-de-ming-bai-demo.onrender.com',
+    url: 'https://chidemingbai.cjmai.top',
     image: '/assets/nutrition.png',
     alt: '吃得明白营养分析工具预览',
   },
