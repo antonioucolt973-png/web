@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { capabilities, process, projects } from './data'
+import { capabilities, process, projectCategories, projects } from './data'
 
 function ArrowIcon({ external = false }) {
   return external ? (
@@ -103,16 +103,37 @@ function Capabilities() {
 
 function Projects() {
   const [active, setActive] = useState(0)
-  const project = projects[active]
+  const [activeCategory, setActiveCategory] = useState('all')
+  const filteredProjects = activeCategory === 'all'
+    ? projects
+    : projects.filter((item) => item.category === activeCategory)
+  const project = filteredProjects[active] ?? filteredProjects[0]
+
+  useEffect(() => {
+    setActive(0)
+  }, [activeCategory])
+
   return (
     <section className="section projects" id="projects">
       <div className="section-heading reveal">
         <span className="section-number">02</span>
         <div><h2>项目展示</h2><p>用可运行的产品，而不是文档，验证想法。</p></div>
       </div>
+      <div className="project-filters reveal" aria-label="项目分类">
+        {projectCategories.map((category) => (
+          <button
+            className={category.id === activeCategory ? 'category-pill active' : 'category-pill'}
+            key={category.id}
+            type="button"
+            onClick={() => setActiveCategory(category.id)}
+          >
+            {category.label}
+          </button>
+        ))}
+      </div>
       <div className="project-showcase reveal">
         <div className="project-index" role="tablist" aria-label="项目列表">
-          {projects.map((item, index) => (
+          {filteredProjects.map((item, index) => (
             <button
               className={index === active ? 'project-tab active' : 'project-tab'}
               key={item.title}
@@ -121,7 +142,7 @@ function Projects() {
               aria-controls="project-panel"
               onClick={() => setActive(index)}
             >
-              <span>{item.number}</span><div><strong>{item.title}</strong><small>{item.type}</small></div>
+              <span>{item.number}</span><div><strong>{item.title}</strong><small>{item.categoryLabel} · {item.type}</small></div>
             </button>
           ))}
         </div>
@@ -134,6 +155,7 @@ function Projects() {
           <div className="project-copy">
             <span className="project-count">PROJECT / {project.number}</span>
             <h3>{project.title}</h3>
+            <em>{project.categoryLabel}</em>
             <p>{project.type}</p>
             <ul>{project.points.map((point) => <li key={point}>{point}</li>)}</ul>
             <a className="project-link" href={project.url} target="_blank" rel="noreferrer">
