@@ -101,9 +101,13 @@ main { overflow: hidden; }
 .project-image-wrap.media-01 { --media-glow: rgba(196, 154, 100, .16); }
 .project-image-wrap.media-02 { --media-glow: rgba(88, 104, 46, .22); }
 .project-image-wrap.media-03 { --media-glow: rgba(191, 134, 91, .14); }
-.project-image-wrap.media-04 { --media-glow: rgba(191, 134, 91, .14); }
+.project-image-wrap.media-04 { --media-glow: rgba(196, 154, 100, .16); }
+.project-image-wrap.media-05 { --media-glow: rgba(88, 104, 46, .22); }
+.project-image-wrap.media-06 { --media-glow: rgba(191, 134, 91, .14); }
 .project-image-frame { width: 100%; overflow: hidden; position: relative; z-index: 1; border: 1px solid rgba(184, 196, 234, .22); border-radius: 10px; background: #03060c; box-shadow: 0 18px 42px rgba(0, 0, 0, .38); }
 .project-image-frame img { width: 100%; height: auto; display: block; }
+.project-image-wrap.media-03 .project-image-frame { width: min(360px, 100%); max-height: 100%; }
+.project-image-wrap.media-03 .project-image-frame img { width: 100%; height: auto; }
 .project-copy { padding-right: 24px; }.project-copy h3 { margin: 20px 0 10px; font-size: 35px; letter-spacing: -.04em; }.project-copy em { display: inline-flex; margin-bottom: 13px; padding: 5px 10px; color: #aeb8ff; font-size: 13px; font-style: normal; border: 1px solid rgba(132, 151, 255, .34); border-radius: 999px; background: rgba(68, 86, 190, .14); }.project-copy > p { margin: 0; color: #bdc3d3; font-size: 17px; line-height: 1.6; }.project-copy ul { list-style: none; margin: 34px 0 40px; padding: 0; color: var(--muted); }.project-copy li { margin: 16px 0; padding-left: 20px; position: relative; line-height: 1.5; }.project-copy li::before { content: ""; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: #6e72ff; box-shadow: 0 0 12px #6e72ff; }
 .project-link { display: inline-flex; align-items: center; gap: 12px; font-weight: 650; }.project-link svg { width: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; transition: transform .25s; }.project-link:hover svg { transform: translate(3px, -3px); }
 
